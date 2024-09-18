@@ -62,10 +62,6 @@ const postProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             msg: `Ups ha ocurrido un error comuniquese con soporte`
         });
     }
-    yield producto_1.default.create(body);
-    res.json({
-        msg: `El producto fue agreagado con éxito`
-    });
 });
 exports.postProduct = postProduct;
 const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

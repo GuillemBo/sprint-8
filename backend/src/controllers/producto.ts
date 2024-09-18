@@ -54,13 +54,6 @@ export const postProduct = async (req: Request, res: Response) => {
             msg: `Ups ha ocurrido un error comuniquese con soporte`
         })
     }
-
-    await Producto.create(body);
-
-    res.json({
-        msg: `El producto fue agreagado con éxito`
-    })
-
 }
 
 export const updateProduct = async (req: Request, res: Response) => {

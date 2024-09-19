@@ -6,3 +6,4 @@ const sequelize = new Sequelize('almacen', 'root', 'admin', {
   });
 
   export default sequelize;
+

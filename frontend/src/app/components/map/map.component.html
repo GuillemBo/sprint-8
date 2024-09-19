@@ -1,1 +1,41 @@
-<p>map works!</p>
+<!-- src/app/components/map/map.component.html -->
+
+<div>
+    <h2>Puntos del Mapa</h2>
+    
+    <!-- Contenedor para el mapa de Leaflet -->
+    <div id="map" style="height: 500px;"></div>
+  
+    <!-- Formulario para añadir nuevos puntos -->
+    <h3>Añadir Nuevo Punto</h3>
+    <form [formGroup]="newPointForm" (ngSubmit)="onSubmit()">
+      <label>
+        Nombre:
+        <input formControlName="name" type="text" placeholder="Nombre del punto" required>
+      </label>
+      <label>
+        Descripción:
+        <input formControlName="description" type="text" placeholder="Descripción del punto" required>
+      </label>
+      <label>
+        Latitud:
+        <input formControlName="latitude" type="number" placeholder="Latitud" required>
+      </label>
+      <label>
+        Longitud:
+        <input formControlName="longitude" type="number" placeholder="Longitud" required>
+      </label>
+      <button type="submit" [disabled]="newPointForm.invalid">Agregar Punto</button>
+    </form>
+  
+    <!-- Opcional: Controles para listar y eliminar puntos -->
+    <ul>
+        @for (point of mapPoints; track $index) {
+      <li>
+        <strong>{{ point.name }}</strong> - {{ point.description }} ({{ point.latitude }}, {{ point.longitude }})
+        <button (click)="deleteMapPoint(point.id)">Eliminar</button>
+      </li>
+    }
+    </ul>
+  </div>
+  

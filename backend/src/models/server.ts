@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import routesProducto from '../routes/producto'
+import routesMapPoint from '../routes/mapPoint';
 import db from '../db/connection';
 
 class Server {
@@ -28,7 +29,8 @@ class Server {
                 msg: 'API working'
             })
         })
-        this.app.use('/api/productos', routesProducto)
+        this.app.use('/api/productos', routesProducto);
+        this.app.use('/api/mapPoints', routesMapPoint);
     }
 
     midlewares() {

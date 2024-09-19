@@ -87,17 +87,5 @@ const updateProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             msg: `Ups ha ocurrido un error comuniquese con soporte`
         });
     }
-    const product = yield producto_1.default.findByPk(id);
-    if (product) {
-        yield product.update(body);
-        res.json({
-            msg: `El producto fue actualizado con éxito`
-        });
-    }
-    else {
-        res.status(404).json({
-            msg: `No existe un producto con el id ${id}`
-        });
-    }
 });
 exports.updateProduct = updateProduct;

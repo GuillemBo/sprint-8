@@ -2,7 +2,7 @@
 
 @if (!loading) {
 <div class="container mt-6 ml-2">
-    <h4>Listado de productos</h4>
+    <h4 class="mx-7 font-bold text-lg">Listado de productos</h4>
 </div>
 
 <div class="flex justify-end my-2">
@@ -11,7 +11,7 @@
         Producto</button>
 </div>
 
-<div class="relative overflow-x-auto">
+<div class="relative overflow-x-auto mx-7">
     @if (listProducts.length > 0) {
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -50,11 +50,11 @@
                 </td>
                 <td class="px-6 py-4 space-x-4">
                     <button routerLink="/edit/{{ product.id }}" type="button"
-                        class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-yellow-400 rounded-lg hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Edit
                     </button>
                     <button (click)="deleteProduct(product.id!)" type="button"
-                        class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-neutral-400 rounded-lg hover:bg-neutral-500 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         Delete
                     </button>
                 </td>

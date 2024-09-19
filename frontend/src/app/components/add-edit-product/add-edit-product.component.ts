@@ -14,14 +14,14 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './add-edit-product.component.html',
   styleUrl: './add-edit-product.component.scss'
 })
-export class AddEditProductComponent implements OnInit{
+export class AddEditProductComponent implements OnInit {
   form: FormGroup;
   loading: boolean = false
   id: number;
   operacion: string = 'Agregar '
 
-  constructor(private fb: FormBuilder, 
-    private productService: ProductService, 
+  constructor(private fb: FormBuilder,
+    private productService: ProductService,
     private router: Router,
     private toastr: ToastrService,
     private aRouter: ActivatedRoute) {
@@ -47,7 +47,7 @@ export class AddEditProductComponent implements OnInit{
 
   getProduct(id: number) {
     this.loading = true;
-    this.productService.getProduct(id).subscribe((data:Product) => {
+    this.productService.getProduct(id).subscribe((data: Product) => {
       console.log(data)
       this.loading = false
       this.form.setValue({
@@ -68,13 +68,27 @@ export class AddEditProductComponent implements OnInit{
       stock: this.form.value.stock
     }
 
-    this.loading = true;
-    this.productService.saveProduct(product).subscribe(() => {
-      console.log('Producto agregado con éxito')
-      this.loading = false
-      this.toastr.success(`El producto ${product.name} fue registrado con éxito`, 'producto registrado')
-      this.router.navigate(['/'])
-    })
+    this.loading = true
+
+    if (this.id !== 0) {
+      //Es editar
+      product.id = this.id;
+      this.productService.updateProduct(this.id, product).subscribe(() => {
+        this.toastr.success(`El producto ${product.name} fue actualizado con éxito`, 'producto actualizado')
+        this.loading = false
+        this.router.navigate(['/'])
+      })
+
+    } else {
+      //Es agregar
+      this.productService.saveProduct(product).subscribe(() => {
+        console.log('Producto agregado con éxito')
+        this.toastr.success(`El producto ${product.name} fue registrado con éxito`, 'producto registrado')
+        this.loading = false
+        this.router.navigate(['/'])
+      })
+    }
+
   }
 
 }

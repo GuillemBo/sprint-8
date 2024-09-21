@@ -14,26 +14,26 @@ export class MapPointService {
 
   // Obtener todos los puntos del mapa
   getMapPoints(): Observable<any> {
-    return this.http.get(`${this.apiUrl}`);
+    return this.http.get<any[]>(`${this.apiUrl}`);
   }
 
   // Obtener un punto del mapa por ID
   getMapPoint(id: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${id}`);
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
   // Crear un nuevo punto del mapa
   addMapPoint(point: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}`, point);
+    return this.http.post<any>(`${this.apiUrl}`, point);
   }
 
   // Actualizar un punto del mapa
   updateMapPoint(id: number, point: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, point);
+    return this.http.put<any>(`${this.apiUrl}/${id}`, point);
   }
 
   // Eliminar un punto del mapa
   deleteMapPoint(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

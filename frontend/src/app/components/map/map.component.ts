@@ -54,15 +54,21 @@ export class MapComponent implements OnInit {
     });
   }
 
-  // Cargar puntos del mapa y añadirlos al mapa de Leaflet
-  loadMapPoints(): void {
-    this.mapPointService.getMapPoints().subscribe(points => {
+// Cargar puntos del mapa y añadirlos al mapa de Leaflet
+loadMapPoints(): void {
+  this.mapPointService.getMapPoints().subscribe({
+    next: (points) => {
       this.mapPoints = points;
       this.addPointsToMap(); // Añadir los puntos al mapa
-    }, error => {
-      console.error('Error al cargar los puntos del mapa:', error);
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Error al cargar los puntos del mapa:', err);
+    },
+    complete: () => {
+      console.log('Carga de puntos completa');
+    }
+  });
+}
 
   // Añadir los puntos al mapa
   addPointsToMap(): void {
@@ -96,11 +102,12 @@ export class MapComponent implements OnInit {
     this.addMapPoint();
   }
 
-  // Agregar un nuevo punto al mapa y a la base de datos
-  addMapPoint(): void {
-    const point = this.newPointForm.value;
+// Agregar un nuevo punto al mapa y a la base de datos
+addMapPoint(): void {
+  const point = this.newPointForm.value;
 
-    this.mapPointService.addMapPoint(point).subscribe(response => {
+  this.mapPointService.addMapPoint(point).subscribe({
+    next: (response) => {
       console.log('Punto agregado:', response);
 
       // Añadir el nuevo punto al mapa
@@ -109,23 +116,32 @@ export class MapComponent implements OnInit {
       // Limpiar el formulario
       this.newPointForm.reset();
 
-      // Opcional: Actualizar la lista local de puntos
+      // Actualizar la lista local de puntos
       this.mapPoints.push(response);
-
-      // Actualizar el mapa con los puntos
       this.addPointsToMap();
-    }, error => {
-      console.error('Error al agregar el punto:', error);
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Error al agregar el punto:', err);
+    },
+    complete: () => {
+      console.log('Punto agregado correctamente');
+    }
+  });
+}
 
-  // Eliminar un punto por ID y actualizar la lista
-  deleteMapPoint(id: number): void {
-    this.mapPointService.deleteMapPoint(id).subscribe(() => {
+// Eliminar un punto por ID y actualizar la lista
+deleteMapPoint(id: number): void {
+  this.mapPointService.deleteMapPoint(id).subscribe({
+    next: () => {
       console.log('Punto eliminado:', id);
       this.loadMapPoints(); // Recargar los puntos del mapa
-    }, error => {
-      console.error('Error al eliminar el punto:', error);
-    });
-  }
+    },
+    error: (err) => {
+      console.error('Error al eliminar el punto:', err);
+    },
+    complete: () => {
+      console.log('Eliminación de punto completa');
+    }
+  });
+}
 }

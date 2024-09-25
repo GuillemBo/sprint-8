@@ -108,17 +108,19 @@ addMapPoint(): void {
 
   this.mapPointService.addMapPoint(point).subscribe({
     next: (response) => {
-      console.log('Punto agregado:', response);
+      // Asegúrate de que `response.newPoint` es lo que necesitas
+      const newPoint = response.newPoint || response;  // Accede correctamente al nuevo punto
+      console.log('Punto agregado:', newPoint);
 
       // Añadir el nuevo punto al mapa
-      this.addPointToMap(response);
+      this.addPointToMap(newPoint);
 
       // Limpiar el formulario
       this.newPointForm.reset();
 
       // Actualizar la lista local de puntos
-      this.mapPoints.push(response);
-      this.addPointsToMap();
+      this.mapPoints.push(newPoint);
+      this.addPointsToMap(); // Actualiza los puntos en el mapa
     },
     error: (err) => {
       console.error('Error al agregar el punto:', err);

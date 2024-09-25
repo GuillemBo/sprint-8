@@ -59,7 +59,7 @@ exports.deleteCalendarEvent = deleteCalendarEvent;
 const postCalendarEvent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
     try {
-        const newEvent = yield eventCalendar_1.default.create(body); // Guardar el evento
+        const newEvent = yield eventCalendar_1.default.create(body);
         res.status(201).json(newEvent);
     }
     catch (error) {

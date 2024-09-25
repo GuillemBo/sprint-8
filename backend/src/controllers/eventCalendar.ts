@@ -46,7 +46,7 @@ export const postCalendarEvent = async (req: Request, res: Response) => {
     const { body } = req
 
     try {
-        const newEvent = await EventCalendar.create(body);  // Guardar el evento
+        const newEvent = await EventCalendar.create(body);
         res.status(201).json(newEvent);
     } catch (error) {
         console.log(error);

@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import routesProducto from '../routes/producto'
 import routesMapPoint from '../routes/mapPoint';
+import routesEventCalendar from '../routes/eventCalendar';
 import db from '../db/connection';
 
 class Server {
@@ -31,6 +32,7 @@ class Server {
         })
         this.app.use('/api/productos', routesProducto);
         this.app.use('/api/mapPoints', routesMapPoint);
+        this.app.use('/api/events', routesEventCalendar);
     }
 
     midlewares() {

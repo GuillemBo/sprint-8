@@ -1,5 +1,3 @@
-// routes/mapPoint.ts
-
 import { Router } from 'express';
 import { deleteMapPoint, getMapPoint, getMapPoints, postMapPoint, updateMapPoint } from '../controllers/mapPoint';
 

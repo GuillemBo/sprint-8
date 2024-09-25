@@ -1,5 +1,4 @@
 "use strict";
-// controllers/mapPoint.ts
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -15,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteMapPoint = exports.updateMapPoint = exports.postMapPoint = exports.getMapPoint = exports.getMapPoints = void 0;
 const mapPoint_1 = __importDefault(require("../models/mapPoint"));
-// Obtener todos los puntos del mapa
 const getMapPoints = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const points = yield mapPoint_1.default.findAll();
@@ -29,7 +27,6 @@ const getMapPoints = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.getMapPoints = getMapPoints;
-// Obtener un punto del mapa por ID
 const getMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
@@ -51,7 +48,6 @@ const getMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getMapPoint = getMapPoint;
-// Crear un nuevo punto del mapa
 const postMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
     try {
@@ -69,7 +65,6 @@ const postMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.postMapPoint = postMapPoint;
-// Actualizar un punto del mapa
 const updateMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { body } = req;
@@ -96,7 +91,6 @@ const updateMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.updateMapPoint = updateMapPoint;
-// Eliminar un punto del mapa
 const deleteMapPoint = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {

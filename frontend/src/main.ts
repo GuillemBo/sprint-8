@@ -6,6 +6,7 @@ import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
+import { FullcalendarComponent } from './app/components/fullcalendar/fullcalendar.component';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -15,3 +16,7 @@ bootstrapApplication(AppComponent, {
     provideToastr(), 
   ],
 }).catch((err) => console.error(err));
+
+
+bootstrapApplication(FullcalendarComponent)
+  .catch(err => console.error(err));

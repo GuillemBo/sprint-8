@@ -1,9 +1,6 @@
-// controllers/mapPoint.ts
-
 import { Request, Response } from 'express';
 import MapPoint from '../models/mapPoint';
 
-// Obtener todos los puntos del mapa
 export const getMapPoints = async (req: Request, res: Response) => {
     try {
         const points = await MapPoint.findAll();
@@ -16,7 +13,6 @@ export const getMapPoints = async (req: Request, res: Response) => {
     }
 };
 
-// Obtener un punto del mapa por ID
 export const getMapPoint = async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
@@ -36,7 +32,6 @@ export const getMapPoint = async (req: Request, res: Response) => {
     }
 };
 
-// Crear un nuevo punto del mapa
 export const postMapPoint = async (req: Request, res: Response) => {
     const { body } = req;
     try {
@@ -53,7 +48,7 @@ export const postMapPoint = async (req: Request, res: Response) => {
     }
 };
 
-// Actualizar un punto del mapa
+
 export const updateMapPoint = async (req: Request, res: Response) => {
     const { id } = req.params;
     const { body } = req;
@@ -79,7 +74,6 @@ export const updateMapPoint = async (req: Request, res: Response) => {
     }
 };
 
-// Eliminar un punto del mapa
 export const deleteMapPoint = async (req: Request, res: Response) => {
     const { id } = req.params;
 

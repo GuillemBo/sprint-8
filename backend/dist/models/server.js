@@ -16,6 +16,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const producto_1 = __importDefault(require("../routes/producto"));
 const mapPoint_1 = __importDefault(require("../routes/mapPoint"));
+const eventCalendar_1 = __importDefault(require("../routes/eventCalendar"));
 const connection_1 = __importDefault(require("../db/connection"));
 class Server {
     constructor() {
@@ -39,6 +40,7 @@ class Server {
         });
         this.app.use('/api/productos', producto_1.default);
         this.app.use('/api/mapPoints', mapPoint_1.default);
+        this.app.use('/api/events', eventCalendar_1.default);
     }
     midlewares() {
         this.app.use(express_1.default.json());

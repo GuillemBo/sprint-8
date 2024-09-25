@@ -1,5 +1,4 @@
 "use strict";
-// routes/mapPoint.ts
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const mapPoint_1 = require("../controllers/mapPoint");

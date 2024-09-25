@@ -31,7 +31,6 @@ export class AddEditProductComponent implements OnInit {
       price: ['', Validators.required],
       stock: ['', Validators.required],
     })
-    // aRouter.snapshot.paramMap.get('id')
     this.id = Number(aRouter.snapshot.paramMap.get('id'))
 
   }

@@ -63,6 +63,8 @@ export class FullcalendarComponent implements OnInit {
             title: response.title,
             start: response.date
           });
+          console.log('Evento a agregar:', response);
+          this.loadEvents();
         });
     }
 }

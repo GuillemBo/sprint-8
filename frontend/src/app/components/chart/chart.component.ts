@@ -20,7 +20,7 @@ export class ChartComponent implements OnInit {
   private lineChart!: Chart;
 
   constructor(private productService: ProductService) {
-    Chart.register(...registerables); // Asegúrate de registrar los componentes de Chart.js
+    Chart.register(...registerables);
   }
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class ChartComponent implements OnInit {
     }
 
     const barConfig: ChartConfiguration<'bar'> = {
-      type: 'bar', // Asegúrate de usar 'bar' como tipo
+      type: 'bar',
       data: {
         labels: labels,
         datasets: [{
@@ -73,7 +73,7 @@ export class ChartComponent implements OnInit {
     }
 
     const lineConfig: ChartConfiguration<'line'> = {
-      type: 'line', // Asegúrate de usar 'line' como tipo
+      type: 'line',
       data: {
         labels: labels,
         datasets: [{
